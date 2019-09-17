@@ -1,7 +1,76 @@
 .bg-login{
     width: 100%;
     height: 100%;
-    background-image: url('/assets/imgs/inicio.png');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(to top, rgb(85, 58, 243), rgb(109, 80, 241));
+
+}
+
+.degrade{
+       width: 100%;
+       height: 100%;
+       background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+}
+
+.logo-login{
+    width: 40%;
+}
+
+.bg-transparent{
+    background-color: transparent;
+}
+
+//Alinhamento
+.center{
+    text-align: center;
+}
+
+//Margens
+.mg-top-5{
+    margin-top: 5px;
+}
+
+.mg-top-10{
+    margin-top: 10px;
+}
+
+.mg-top-20{
+    margin-top: 20px;
+}
+
+.mg-top-30{
+    margin-top: 30px;
+}
+
+//Espacamento
+
+.padding-top-30{
+    padding-top: 30px;
+}
+
+//Cores
+
+.light-blue{
+    color: #92DCE5;
+}
+
+.platinum{
+    color: #EEE5E9;
+}
+
+.tif-blue{
+    color: #03B5AA;
+}
+
+.light-cyan{
+    color: #D2FDFF;
+}
+
+//Fontes
+
+.bold{
+    font-weight: 800;
+}
+
+.light{
+    font-weight: 400;
 }

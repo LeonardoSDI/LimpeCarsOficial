@@ -1,14 +1,14 @@
 .bg-login{
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgb(85, 58, 243), rgb(109, 80, 241));
+    background: linear-gradient(to top, rgb(85, 58, 243), rgb(5, 160, 134));
 
 }
 
 .degrade{
        width: 100%;
        height: 100%;
-       background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+       background: linear-gradient(to top, rgb(27, 27, 27), transparent);
 }
 
 .logo-login{
@@ -16,7 +16,18 @@
 }
 
 .bg-transparent{
-    background-color: transparent;
+    background: transparent;
+}
+
+.bg-entrar{
+    padding: 15px;
+    background-color: blue;
+    border-radius: 100px;
+    color: black;
+}
+
+.bg-registrar{
+    color: lightcyan;
 }
 
 //Alinhamento
@@ -25,8 +36,12 @@
 }
 
 //Margens
+.mg-top-15{
+    margin-top: -15px;
+}
+
 .mg-top-5{
-    margin-top: 5px;
+    margin-top: -25px;
 }
 
 .mg-top-10{
@@ -42,9 +57,20 @@
 }
 
 //Espacamento
+.no-padding{
+    padding: 0px;
+}
+
+.padding-20{
+    padding: 20px;
+}
 
 .padding-top-30{
     padding-top: 30px;
+}
+
+.padding-40{
+    padding: 40px;
 }
 
 //Cores
@@ -65,10 +91,18 @@
     color: #D2FDFF;
 }
 
+.black{
+    color: #000;
+}
+
 //Fontes
 
 .bold{
     font-weight: 800;
+}
+
+.bold2{
+    font-weight: 600;
 }
 
 .light{

@@ -1,6 +1,6 @@
 <ion-content>
   <!--LOGIN-->
-  <div class="bg-login" *ngIf="login">
+  <div class="bg-login" *ngIf="login" [@login]>
     <div class="degrade">
       <!--CONTEUDO LOGIN-->
       <div>
@@ -25,18 +25,18 @@
           <div class="padding-20">
             <ion-item class="bg-transparent no-padding">
               <ion-label stacked class="white" position="floating">E-mail</ion-label>
-              <ion-input type="email" clearInput class="white"></ion-input>
+              <ion-input type="email" clearInput class="white" [(ngModel)]="loginForm.email"></ion-input>
             </ion-item>
 
             <ion-item class="bg-transparent mg-top-10">
               <ion-label stacked class="white" position="floating">Senha</ion-label>
-              <ion-input type="password" clearInput class="white"></ion-input>
+              <ion-input type="password" clearInput class="white" [(ngModel)]="loginForm.password"></ion-input>
             </ion-item>
           </div>
 
           <!--BOTAO ENTRAR-->
           <div class="padding-40">
-            <div class="bg-entrar center bold2 mg-top--15">
+            <div class="bg-entrar center bold2 mg-top--15" (click)="efetuarLogin()">
               Entrar
             </div>
           </div>
@@ -49,7 +49,7 @@
   </div>
 
   <!--REGISTER-->
-  <div class="bg-register" *ngIf="register">
+  <div class="bg-register" *ngIf="register" [@registro]>
     <div class="degrade">
       <!--CONTEUDO REGISTER-->
       <div>
@@ -74,23 +74,23 @@
           <div class="padding-20">
             <ion-item class="bg-transparent no-padding">
               <ion-label stacked class="white" position="floating">Qual seu nome</ion-label>
-              <ion-input type="text" clearInput class="white"></ion-input>
+              <ion-input type="text" clearInput class="white" [(ngModel)]="registerForm.name"></ion-input>
             </ion-item>
 
             <ion-item class="bg-transparent mg-top-10">
               <ion-label stacked class="white" position="floating">Qual seu e-mail</ion-label>
-              <ion-input type="email" clearInput class="white"></ion-input>
+              <ion-input type="email" clearInput class="white" [(ngModel)]="registerForm.email"></ion-input>
             </ion-item>
 
             <ion-item class="bg-transparent mg-top-10">
               <ion-label stacked class="white" position="floating">Qual é sua senha</ion-label>
-              <ion-input type="password" clearInput class="white"></ion-input>
+              <ion-input type="password" clearInput class="white" [(ngModel)]="registerForm.password"></ion-input>
             </ion-item>
           </div>
 
           <!--BOTAO ENTRAR-->
           <div class="padding-40">
-            <div class="bg-cadastro center bold2 mg-top--5">
+            <div class="bg-cadastro center bold2 mg-top--15" (click)="criarConta()">
               Cadastrar
             </div>
           </div>

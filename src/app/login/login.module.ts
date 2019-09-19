@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,7 +17,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     IonicModule,

@@ -5,6 +5,14 @@
 
 }
 
+.bg-register{
+    width: 100%;
+    height: fit-content;
+    background: linear-gradient(to top, rgb(85, 58, 243), rgb(5, 160, 134));
+
+}
+
+
 .degrade{
        width: 100%;
        height: 100%;
@@ -16,14 +24,22 @@
 }
 
 .bg-transparent{
-    background: transparent;
+    --ion-background-color: transparent;
+    --ion-border-color: white;
 }
 
 .bg-entrar{
     padding: 15px;
     background-color: blue;
     border-radius: 100px;
-    color: black;
+    color: white;
+}
+
+.bg-cadastro{
+    padding: 15px;
+    background-color: blue;
+    border-radius: 100px;
+    color: white;
 }
 
 .bg-registrar{
@@ -36,12 +52,23 @@
 }
 
 //Margens
-.mg-top-15{
+.mg-top--15{
     margin-top: -15px;
 }
 
-.mg-top-5{
+.mg-top-15{
+    margin-top: 15px;
+}
+
+.mg-top-25{
     margin-top: -25px;
+}
+
+.mg-top-5{
+    margin-top: 5px;
+}
+.mg-top--5{
+    margin-top: 5px;
 }
 
 .mg-top-10{
@@ -91,8 +118,9 @@
     color: #D2FDFF;
 }
 
-.black{
-    color: #000;
+.white{
+    color: white;
+    border: white;
 }
 
 //Fontes

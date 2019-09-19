@@ -1,6 +1,6 @@
 <ion-content>
-  <!--BACKGROUND-->
-  <div class="bg-login">
+  <!--LOGIN-->
+  <div class="bg-login" *ngIf="login">
     <div class="degrade">
       <!--CONTEUDO LOGIN-->
       <div>
@@ -24,25 +24,79 @@
          <!--INPUTS-->
           <div class="padding-20">
             <ion-item class="bg-transparent no-padding">
-              <ion-label stacked class="black">E-mail:</ion-label>
-              <ion-input type="email" clearInput></ion-input>
+              <ion-label stacked class="white" position="floating">E-mail</ion-label>
+              <ion-input type="email" clearInput class="white"></ion-input>
             </ion-item>
 
             <ion-item class="bg-transparent mg-top-10">
-              <ion-label stacked class="black">Senha:</ion-label>
-              <ion-input type="password" clearInput></ion-input>
+              <ion-label stacked class="white" position="floating">Senha</ion-label>
+              <ion-input type="password" clearInput class="white"></ion-input>
             </ion-item>
           </div>
 
           <!--BOTAO ENTRAR-->
           <div class="padding-40">
-            <div class="bg-entrar center bold mg-top-15">
+            <div class="bg-entrar center bold2 mg-top--15">
               Entrar
             </div>
           </div>
 
-          <div class="bg-registrar bold2 mg-top-20 center">
-            (Criar uma nova conta agora)
+          <div class="bg-registrar bold2 mg-top-15 center" (click)="exibirRegistrar()">
+            Crie uma nova conta agora
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!--REGISTER-->
+  <div class="bg-register" *ngIf="register">
+    <div class="degrade">
+      <!--CONTEUDO REGISTER-->
+      <div>
+         <!--LOGO REGISTER-->
+         <div class="center padding-top-30">
+           <img src="/assets/imgs/logo.png" class="logo-login">
+         </div>
+
+         <!--TEXTOS REGISTER-->
+         <div class="mg-top-20">
+           <!--TITULO-->
+           <h5 class="light-cyan center bold">
+             Crie sua conta já!
+           </h5>
+           <!--SUBTITULO-->
+           <p class="light-cyan center light">
+             Cadastre-se para acessar o aplicativo
+           </p>
+         </div>
+
+         <!--INPUTS-->
+          <div class="padding-20">
+            <ion-item class="bg-transparent no-padding">
+              <ion-label stacked class="white" position="floating">Qual seu nome</ion-label>
+              <ion-input type="text" clearInput class="white"></ion-input>
+            </ion-item>
+
+            <ion-item class="bg-transparent mg-top-10">
+              <ion-label stacked class="white" position="floating">Qual seu e-mail</ion-label>
+              <ion-input type="email" clearInput class="white"></ion-input>
+            </ion-item>
+
+            <ion-item class="bg-transparent mg-top-10">
+              <ion-label stacked class="white" position="floating">Qual é sua senha</ion-label>
+              <ion-input type="password" clearInput class="white"></ion-input>
+            </ion-item>
+          </div>
+
+          <!--BOTAO ENTRAR-->
+          <div class="padding-40">
+            <div class="bg-cadastro center bold2 mg-top--5">
+              Cadastrar
+            </div>
+          </div>
+
+          <div class="bg-registrar bold2 mg-top-25 center" (click)="exibirLogin()">
+            Já possui uma conta
           </div>
       </div>
     </div>

@@ -16,11 +16,16 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//Plugins
+import { IonicStorageModule } from '@ionic/storage';
+
 //Providers
 import { AuthProvider } from '../providers/auth';
 import { FirebaseProvider } from '../providers/firebase';
 
 import {LoginPageModule} from '../app/login/login.module';
+import {MostrarMapsPageModule} from '../app/mostrar-maps/mostrar-maps.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,12 +33,14 @@ import {LoginPageModule} from '../app/login/login.module';
   imports: [
     BrowserAnimationsModule, 
     LoginPageModule, 
+    MostrarMapsPageModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     FirebaseProvider,

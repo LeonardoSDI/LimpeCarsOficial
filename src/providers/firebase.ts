@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { getDefaultService } from 'selenium-webdriver/opera';
 
 @Injectable()
 export class FirebaseProvider{
@@ -13,5 +14,10 @@ export class FirebaseProvider{
       .collection("users")
       .doc(data.uid)
       .set(data);
+
+    getUser(uid){
+      return this.afs.firestore.collection('users').doc(uid)
+      .get();
+    }
     
 }

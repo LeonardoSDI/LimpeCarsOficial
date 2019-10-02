@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AuthProvider } from '../../providers/auth';
 import { FirebaseProvider } from '../../providers/firebase';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController} from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -63,7 +65,9 @@ export class LoginPage implements OnInit {
   constructor(
     private authProvider: AuthProvider,
     private firebaseProvider: FirebaseProvider,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private storages: Storage,
+    private router: Router
   ) {
   }
 
@@ -88,7 +92,18 @@ export class LoginPage implements OnInit {
     await load.present();
     this.authProvider.login(this.loginForm)
     .then((res) => {
-      load.dismiss();
+      let uid = res.user.uid;
+
+      this.firebaseProvider.getUser(uid)
+      .then((res) => {
+        let data = res.data();
+        this.storages.set('usuario', data)
+        .then(() => {
+          load.dismiss();
+          this.router.navigateByUrl('/mostrar-maps');
+        })
+      })
+      
     })
     .catch((err) => {
       load.dismiss();
@@ -116,7 +131,12 @@ export class LoginPage implements OnInit {
       //Gravar dados no firestore
       this.firebaseProvider.postUser(data)
       .then(() => {
-        load.dismiss();
+
+        this.storages.set('usuario', data)
+        .then(() => {
+          load.dismiss();
+          this.router.navigateByUrl('/mostrar-maps');
+        })
       })
     })
     .catch((err) => {

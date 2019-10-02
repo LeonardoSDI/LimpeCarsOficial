@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 
 import { IonicModule } from '@ionic/angular';
@@ -22,6 +23,12 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage]
+  declarations: [
+    LoginPage
+  ],
+  providers: [
+    Keyboard
+  ]
+
 })
 export class LoginPageModule {}

@@ -5,6 +5,8 @@ import { FirebaseProvider } from '../../providers/firebase';
 import { LoadingController} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { database } from 'firebase';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-login',
@@ -67,8 +69,12 @@ export class LoginPage implements OnInit {
     private firebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
     private storages: Storage,
-    private router: Router
+    private router: Router,
+    private keyboard: Keyboard
   ) {
+    this.keyboard.onKeyboardWillShow().subscribe(() => {
+      
+    })
   }
 
   // Exibir o formulário de registro
@@ -86,14 +92,13 @@ export class LoginPage implements OnInit {
   //Função Login
   async efetuarLogin(){
     let load = await this.loadingCtrl.create({
-      message: 'Olá',
+      message: 'Olá!',
       duration: 2000
     });
     await load.present();
     this.authProvider.login(this.loginForm)
     .then((res) => {
       let uid = res.user.uid;
-
       this.firebaseProvider.getUser(uid)
       .then((res) => {
         let data = res.data();

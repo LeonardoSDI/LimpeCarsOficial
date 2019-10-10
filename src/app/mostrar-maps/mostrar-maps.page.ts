@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { Geolocation } from '@ionic-native/geolocation';
+import { NavController, ModalController } from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import {
   GoogleMaps,
@@ -10,8 +10,13 @@ import {
   CameraPosition,
   MarkerOptions,
   Marker,
-  Environment
+  Environment,
+  MarkerCluster,
+  MarkerClusterOptions
 } from '@ionic-native/google-maps';
+import { LavacaoProvider } from 'src/providers/lavacao';
+import { DescricaoLavaPage } from '../descricao-lava/descricao-lava.page';
+import { modalController } from '@ionic/core';
 
 @Component({
   selector: 'app-mostrar-maps',
@@ -20,10 +25,13 @@ import {
 })
 export class MostrarMapsPage implements OnInit {
   map: GoogleMap;
+  points = [];
 
   constructor(
     public navCtrl: NavController,
-    public geolocation: Geolocation) { }
+    public geolocation: Geolocation,
+    public modalCtrl: ModalController,
+    public lavacaoProvider: LavacaoProvider) { }
 
   ngOnInit() {
     this.loadMap();
@@ -34,7 +42,7 @@ export class MostrarMapsPage implements OnInit {
       'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I',
       'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I'
     });
-
+    console.log(this.geolocation)
     this.geolocation.getCurrentPosition().then((resp) => {
       let mapOptions: GoogleMapOptions = {
         camera: {
@@ -48,10 +56,43 @@ export class MostrarMapsPage implements OnInit {
       };
   
       this.map = GoogleMaps.create('map_canvas', mapOptions);
+
+      this.fillMissedPointsLavacao();
+
+      this.points.push({
+        position: {
+          lat: resp.coords.latitude,
+          lng: resp.coords.longitude
+        },
+        icon: {
+          url: "assets/imgs/usuario.png",
+          size: {
+            width: 30,
+            height: 30
+          }
+        }
+      });
+
+      let markerCluster: MarkerCluster = this.map.addMarkerClusterSync({
+        boundsDraw: false,
+        markers: this.points,
+        icons: [
+          {
+            min: 500,
+            url: "assets/imgs/usuario.png"
+          }
+        ]
+      });
+
+      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
+        let marker: Marker = params;
+        let profileModal = this.modalCtrl.create(DescricaoLavaPage,  {id: marker.get('id')});
+        profileModal.present();
+      });
   
-      let marker: Marker = this.map.addMarkerSync({
+      /*let marker: Marker = this.map.addMarkerSync({
         title: 'Ionic',
-        icon: 'blue',
+        icon: 'red',
         animation: 'DROP',
         position: {
           lat: resp.coords.latitude,
@@ -60,7 +101,7 @@ export class MostrarMapsPage implements OnInit {
       });
       marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
         alert('clicked');
-      });
+      });*/
 
     }).catch((error) => {
       console.log('Error ao pegar localidade', JSON.stringify(error));
@@ -68,6 +109,28 @@ export class MostrarMapsPage implements OnInit {
     })
 
     
+  }
+
+  private fillMissedPointsLavacao(){
+    this.lavacaoProvider.getMissedLavacao().forEach(lavacao => {
+      let point = {
+        position: {
+          lat: lavacao.geo.lat,
+          lng: lavacao.geo.lng
+        },
+        name: lavacao.name,
+        id: lavacao.id,
+        icon: {
+          url: "assets/imgs/lavacao.png",
+          size: {
+            width: 30,
+            height: 30
+          }
+        }
+      }
+
+      this.points.push(point);
+    })
   }
 
 }

@@ -12,13 +12,12 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
+    <preference name="fullscreen" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I" />
-    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">

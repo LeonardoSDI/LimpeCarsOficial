@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
-import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +19,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storages: Storage,
-    private router: Router,
-    private geolocation: Geolocation
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -40,7 +38,6 @@ export class AppComponent {
       })
 
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
     });
   }
 }

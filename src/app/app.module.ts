@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,9 +23,11 @@ import { IonicStorageModule } from '@ionic/storage';
 //Providers
 import { AuthProvider } from '../providers/auth';
 import { FirebaseProvider } from '../providers/firebase';
+import { LavacaoProvider } from 'src/providers/lavacao';
 
-import {LoginPageModule} from '../app/login/login.module';
-import {MostrarMapsPageModule} from '../app/mostrar-maps/mostrar-maps.module';
+import { LoginPageModule } from '../app/login/login.module';
+import { MostrarMapsPageModule } from '../app/mostrar-maps/mostrar-maps.module';
+import { DescricaoLavaPageModule } from '../app/descricao-lava/descricao-lava.module'; 
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import {MostrarMapsPageModule} from '../app/mostrar-maps/mostrar-maps.module';
     BrowserAnimationsModule, 
     LoginPageModule, 
     MostrarMapsPageModule,
+    DescricaoLavaPageModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
@@ -49,6 +52,7 @@ import {MostrarMapsPageModule} from '../app/mostrar-maps/mostrar-maps.module';
     StatusBar,
     SplashScreen,
     Geolocation,
+    LavacaoProvider,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

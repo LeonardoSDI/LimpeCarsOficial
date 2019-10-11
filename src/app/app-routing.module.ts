@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'mostrar-maps', loadChildren: './mostrar-maps/mostrar-maps.module#MostrarMapsPageModule' },
   { path: 'descricao-lava', loadChildren: './descricao-lava/descricao-lava.module#DescricaoLavaPageModule' },
+  { path: 'cadastro-lavacao', loadChildren: './cadastro-lavacao/cadastro-lavacao.module#CadastroLavacaoPageModule' },
 ];
 
 @NgModule({

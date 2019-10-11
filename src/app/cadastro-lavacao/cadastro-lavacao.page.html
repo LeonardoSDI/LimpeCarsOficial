@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de Lavações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">Empresa</ion-label>
+          <ion-input type="text" [(ngModel)]="lavacao.empresa" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">CNPJ</ion-label>
+          <ion-input type="text" [(ngModel)]="lavacao.cnpj" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">CEP</ion-label>
+          <ion-input type="number" [(ngModel)]="lavacao.cep" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">Endereço</ion-label>
+          <ion-input type="text" [(ngModel)]="lavacao.endereco" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">Número</ion-label>
+          <ion-input type="number" [(ngModel)]="lavacao.numero" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <ion-item class="bg-transparent no-padding">
+          <ion-label stacked class="black" position="floating">Telefone</ion-label>
+          <ion-input type="tel" [(ngModel)]="lavacao.telefone" clearInput class="black"></ion-input>
+      </ion-item>
+
+      <button ion-button full (click)="save(lavacao)">Cadastrar lavacao</button>
+  </ion-list>
+
+</ion-content>

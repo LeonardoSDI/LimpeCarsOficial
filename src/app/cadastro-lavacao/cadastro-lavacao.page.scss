@@ -1,13 +1,6 @@
-#map_canvas{
-    height: 100%;
-    width: 100%;
-}
-
-.bg-lavacao{
-    padding: 15px;
-    background-color: blue;
-    border-radius: 100px;
-    color: white;
+.bg-transparent{
+    --ion-background-color: transparent;
+    --ion-border-color: black;
 }
 
 //Alinhamento
@@ -85,6 +78,11 @@
 .white{
     color: white;
     border: white;
+}
+
+.black{
+    color: black;
+    border: black;
 }
 
 //Fontes

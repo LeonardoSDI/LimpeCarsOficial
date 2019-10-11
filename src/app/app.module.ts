@@ -28,6 +28,8 @@ import { LavacaoProvider } from 'src/providers/lavacao';
 import { LoginPageModule } from '../app/login/login.module';
 import { MostrarMapsPageModule } from '../app/mostrar-maps/mostrar-maps.module';
 import { DescricaoLavaPageModule } from '../app/descricao-lava/descricao-lava.module'; 
+import { CadastroLavacaoPageModule } from '../app/cadastro-lavacao/cadastro-lavacao.module';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 @NgModule({
@@ -38,11 +40,13 @@ import { DescricaoLavaPageModule } from '../app/descricao-lava/descricao-lava.mo
     LoginPageModule, 
     MostrarMapsPageModule,
     DescricaoLavaPageModule,
+    CadastroLavacaoPageModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicStorageModule.forRoot()
   ],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Router } from '@angular/router';
 
 import {
   GoogleMaps,
@@ -16,7 +17,7 @@ import {
 } from '@ionic-native/google-maps';
 import { LavacaoProvider } from 'src/providers/lavacao';
 import { DescricaoLavaPage } from '../descricao-lava/descricao-lava.page';
-import { modalController } from '@ionic/core';
+import { present } from '@ionic/core/dist/types/utils/overlays';
 
 @Component({
   selector: 'app-mostrar-maps',
@@ -31,10 +32,15 @@ export class MostrarMapsPage implements OnInit {
     public navCtrl: NavController,
     public geolocation: Geolocation,
     public modalCtrl: ModalController,
-    public lavacaoProvider: LavacaoProvider) { }
+    public lavacaoProvider: LavacaoProvider,
+    public router: Router) { }
 
   ngOnInit() {
     this.loadMap();
+  }
+
+  cadastroLavacao(){
+    this.navCtrl.navigateRoot('/cadastro-lavacao');
   }
 
   loadMap(){
@@ -84,11 +90,11 @@ export class MostrarMapsPage implements OnInit {
         ]
       });
 
-      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
+      /*markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
         let marker: Marker = params;
-        let profileModal = this.modalCtrl.create(DescricaoLavaPage,  {id: marker.get('id')});
+        let profileModal = this.modalCtrl.create(DescricaoLavaPage, {id: marker.get('id')});
         profileModal.present();
-      });
+      });*/
   
       /*let marker: Marker = this.map.addMarkerSync({
         title: 'Ionic',
@@ -107,7 +113,7 @@ export class MostrarMapsPage implements OnInit {
       console.log('Error ao pegar localidade', JSON.stringify(error));
       alert('Erro ao capturar a sua posição. Por favor, verifique as permissões!');
     })
-
+    
     
   }
 

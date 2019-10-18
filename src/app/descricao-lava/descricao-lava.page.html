@@ -1,15 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <button ion-button clear large navPop>
-        <ion-icon name="arrow-dropleft"></ion-icon>
-    </button>
+      <button ion-button clear large (click)="goBack1()">
+          <ion-icon name="arrow-dropleft"></ion-icon>
+      </button>
 
     <ion-title>descricao-lava</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p text-center>{{lavacao.description}}</p>
-  <h2 text-center>Empresa: <strong>{{lavacao.name}}</strong></h2>
-  <h2 text-center>Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
+  <img [src]="lavacao.photo"/>
+  <p class="ion-text-center">{{lavacao.description}}</p>
+  <h2 class="ion-text-center">Empresa: <strong>{{lavacao.name}}</strong></h2>
+  <h2 class="ion-text-center">Especialidade: <strong>{{lavacao.type}}</strong></h2>
+  <h2 class="ion-text-center">Atendimento: <strong>{{lavacao.attendance}}</strong></h2>
+  <h2 class="ion-text-center">Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
+
+  <div class="padding-40">
+      <button class="bg-lavacao center bold2 mg-top--15" ion-button (click)="solicitarLavacao()">
+          Solicitar lavacao
+      </button>
+  </div>
 </ion-content>

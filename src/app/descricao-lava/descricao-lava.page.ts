@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { LavacaoProvider } from 'src/providers/lavacao';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-descricao-lava',
@@ -13,7 +14,8 @@ export class DescricaoLavaPage implements OnInit {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams, 
-    public lavacaoProvider: LavacaoProvider) {
+    public lavacaoProvider: LavacaoProvider,
+    public router: Router) {
 
       this.lavacao = lavacaoProvider.getMissedLavacaoId(navParams.get('id'));
     }
@@ -21,8 +23,12 @@ export class DescricaoLavaPage implements OnInit {
   ngOnInit() {
   }
 
-  goBack(){
-    this.navCtrl.navigateRoot('/mostrar-maps');
+  goBack1(){
+    this.navCtrl.navigateRoot("/mostrar-maps");
+  }
+
+  solicitarLavacao(){
+    this.navCtrl.navigateRoot("/solicitar-lava");
   }
 
 }

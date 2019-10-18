@@ -19,7 +19,7 @@ export class LavacaoProvider{
             attendance: '08:30 - 17:30', description: 'Lavação que busca atender de forma simples e rápida os clientes.',
             contact: {phone: '(47) 98867-5546'}},
 
-            {id: 1, name: 'Lavação PraJá',
+            {id: 3, name: 'Lavação PraJá',
             geo: {lat: -26.468079, lng: -49.111270}, type: 'Lavagem Ecológica',
             photo: './assets/imgs/lavacao3.png',
             attendance: '07:30 - 18:00', description: 'Lavação especializada em lavagem ecológica. Pensamos no meio-ambiente!',

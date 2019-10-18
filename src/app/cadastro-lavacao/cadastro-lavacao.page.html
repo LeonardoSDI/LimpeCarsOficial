@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-        <button ion-button clear large navPop>
-            <ion-icon name="arrow-dropleft"></ion-icon>
-        </button>
+    <button ion-button clear large (click)="goBack()">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
 
     <ion-title>Cadastro de Lavações</ion-title>
   </ion-toolbar>
@@ -18,7 +18,7 @@
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">CNPJ</ion-label>
-            <ion-input type="text" [(ngModel)]="lavacao.cnpj" clearInput class="black" formControlName="cnpj"></ion-input>
+            <ion-input type="number" [(ngModel)]="lavacao.cnpj" clearInput class="black" formControlName="cnpj"></ion-input>
         </ion-item>
 
         <ion-item class="bg-transparent no-padding">
@@ -43,7 +43,7 @@
 
         <ion-item class="bg-transparent no-padding">
                 <ion-label stacked class="black" position="floating">Cidade</ion-label>
-                <ion-input type="number" [(ngModel)]="lavacao.cidade" clearInput class="black" formControlName="cidade"></ion-input>
+                <ion-input type="text" [(ngModel)]="lavacao.cidade" clearInput class="black" formControlName="cidade"></ion-input>
             </ion-item>
 
         <ion-item class="bg-transparent no-padding">
@@ -52,7 +52,7 @@
         </ion-item>
 
         <div class="padding-40">
-            <button class="center bold2 mg-top--15" (click)="save(lavacao)" type="submit" ion-button [disabled]="lavacaoForm.invalid">
+            <button class="bg-lavacao center bold2 mg-top--15" (click)="save(lavacao)" type="submit" ion-button [disabled]="lavacaoForm.invalid">
                 Cadastrar lavacao
             </button>
         </div>

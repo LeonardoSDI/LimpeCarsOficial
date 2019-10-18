@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
+    <button ion-button clear large navPop>
+        <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
+
     <ion-title>descricao-lava</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <p text-center>{{lavacao.description}}</p>
+  <h2 text-center>Empresa: <strong>{{lavacao.name}}</strong></h2>
+  <h2 text-center>Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
 </ion-content>

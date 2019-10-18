@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseProvider } from '../../providers/firebase';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro-lavacao',
@@ -22,7 +23,7 @@ export class CadastroLavacaoPage implements OnInit {
   };
   
   lavacaoForm: FormGroup;
-  constructor(public dbService: FirebaseProvider, public formbuilder: FormBuilder) {
+  constructor(public dbService: FirebaseProvider, public formbuilder: FormBuilder, public navCtrl: NavController) {
     this.lavacaoForm = this.formbuilder.group({
       empresa: [null, [Validators.required, Validators.minLength(4)]],
       cnpj: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
@@ -47,6 +48,10 @@ export class CadastroLavacaoPage implements OnInit {
   save(lavacao){
     console.log(lavacao);
     this.dbService.save(lavacao);
+  }
+
+  goBack(){
+    this.navCtrl.navigateRoot("/mostrar-maps");
   }
 
 }

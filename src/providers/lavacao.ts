@@ -26,4 +26,8 @@ export class LavacaoProvider{
             contact: {phone: '(47) 99954-2231'}}
         ]
     }
+
+    getMissedLavacaoId(id){
+        return this.getMissedLavacao().filter(lavacao => lavacao.id == id)[0];
+    }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, NavParams } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,6 @@ import {
 } from '@ionic-native/google-maps';
 import { LavacaoProvider } from 'src/providers/lavacao';
 import { DescricaoLavaPage } from '../descricao-lava/descricao-lava.page';
-import { present } from '@ionic/core/dist/types/utils/overlays';
 
 @Component({
   selector: 'app-mostrar-maps',
@@ -43,7 +42,7 @@ export class MostrarMapsPage implements OnInit {
     this.navCtrl.navigateRoot('/cadastro-lavacao');
   }
 
-  loadMap(){
+  async loadMap(){
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I',
       'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyD5Kt-OoieXis55Tuyfj9pGo1CBFKb8f9I'
@@ -79,7 +78,7 @@ export class MostrarMapsPage implements OnInit {
         }
       });
 
-      let markerCluster: MarkerCluster = this.map.addMarkerClusterSync({
+        let markerCluster: MarkerCluster = this.map.addMarkerClusterSync({
         boundsDraw: false,
         markers: this.points,
         icons: [
@@ -90,11 +89,11 @@ export class MostrarMapsPage implements OnInit {
         ]
       });
 
-      /*markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
-        let marker: Marker = params;
-        let profileModal = this.modalCtrl.create(DescricaoLavaPage, {id: marker.get('id')});
-        profileModal.present();
-      });*/
+      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
+        let marker: MarkerCluster = params[1];
+        let profileModal = await this.modalCtrl.create({component: DescricaoLavaPage, componentProps: {id: marker.get('id')}});
+        await profileModal.present();
+      });
   
       /*let marker: Marker = this.map.addMarkerSync({
         title: 'Ionic',
@@ -116,6 +115,7 @@ export class MostrarMapsPage implements OnInit {
     
     
   }
+  
 
   private fillMissedPointsLavacao(){
     this.lavacaoProvider.getMissedLavacao().forEach(lavacao => {

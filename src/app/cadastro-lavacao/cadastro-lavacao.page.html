@@ -1,42 +1,62 @@
 <ion-header>
   <ion-toolbar>
+        <button ion-button clear large navPop>
+            <ion-icon name="arrow-dropleft"></ion-icon>
+        </button>
+
     <ion-title>Cadastro de Lavações</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">Empresa</ion-label>
-          <ion-input type="text" [(ngModel)]="lavacao.empresa" clearInput class="black"></ion-input>
-      </ion-item>
+   <form novalidate [formGroup]="lavacaoForm" (ngSubmit)="cadastraLavacao()">
+    <ion-list class="padding-20">
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">Empresa</ion-label>
+            <ion-input type="text" [(ngModel)]="lavacao.empresa" clearInput class="black" formControlName="empresa"></ion-input>
+        </ion-item>
 
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">CNPJ</ion-label>
-          <ion-input type="text" [(ngModel)]="lavacao.cnpj" clearInput class="black"></ion-input>
-      </ion-item>
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">CNPJ</ion-label>
+            <ion-input type="text" [(ngModel)]="lavacao.cnpj" clearInput class="black" formControlName="cnpj"></ion-input>
+        </ion-item>
 
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">CEP</ion-label>
-          <ion-input type="number" [(ngModel)]="lavacao.cep" clearInput class="black"></ion-input>
-      </ion-item>
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">CEP</ion-label>
+            <ion-input type="number" [(ngModel)]="lavacao.cep" clearInput class="black" formControlName="cep"></ion-input>
+        </ion-item>
 
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">Endereço</ion-label>
-          <ion-input type="text" [(ngModel)]="lavacao.endereco" clearInput class="black"></ion-input>
-      </ion-item>
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">Rua</ion-label>
+            <ion-input type="text" [(ngModel)]="lavacao.rua" clearInput class="black" formControlName="rua"></ion-input>
+        </ion-item>
 
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">Número</ion-label>
-          <ion-input type="number" [(ngModel)]="lavacao.numero" clearInput class="black"></ion-input>
-      </ion-item>
+        <ion-item class="bg-transparent no-padding">
+                <ion-label stacked class="black" position="floating">Bairro</ion-label>
+                <ion-input type="text" [(ngModel)]="lavacao.bairro" clearInput class="black" formControlName="bairro"></ion-input>
+            </ion-item>
 
-      <ion-item class="bg-transparent no-padding">
-          <ion-label stacked class="black" position="floating">Telefone</ion-label>
-          <ion-input type="tel" [(ngModel)]="lavacao.telefone" clearInput class="black"></ion-input>
-      </ion-item>
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">Número</ion-label>
+            <ion-input type="number" [(ngModel)]="lavacao.numero" clearInput class="black" formControlName="numero"></ion-input>
+        </ion-item>
 
-      <button ion-button full (click)="save(lavacao)">Cadastrar lavacao</button>
-  </ion-list>
+        <ion-item class="bg-transparent no-padding">
+                <ion-label stacked class="black" position="floating">Cidade</ion-label>
+                <ion-input type="number" [(ngModel)]="lavacao.cidade" clearInput class="black" formControlName="cidade"></ion-input>
+            </ion-item>
+
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">Telefone</ion-label>
+            <ion-input type="tel" [(ngModel)]="lavacao.telefone" clearInput class="black" formControlName="telefone"></ion-input>
+        </ion-item>
+
+        <div class="padding-40">
+            <button class="center bold2 mg-top--15" (click)="save(lavacao)" type="submit" ion-button [disabled]="lavacaoForm.invalid">
+                Cadastrar lavacao
+            </button>
+        </div>
+    </ion-list>
+   </form>
 
 </ion-content>

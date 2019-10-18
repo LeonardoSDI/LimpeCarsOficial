@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseProvider } from '../../providers/firebase';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-lavacao',
@@ -12,15 +13,35 @@ export class CadastroLavacaoPage implements OnInit {
     'empresa': '',
     'cnpj': '',
     'cep': '',
-    'endereco': '',
+    'rua': '',
+    'bairro': '',
     'numero': '',
+    'cidade': '',
     'telefone': ''
 
   };
+  
+  lavacaoForm: FormGroup;
+  constructor(public dbService: FirebaseProvider, public formbuilder: FormBuilder) {
+    this.lavacaoForm = this.formbuilder.group({
+      empresa: [null, [Validators.required, Validators.minLength(4)]],
+      cnpj: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
+      cep: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      rua: [null, [Validators.required]],
+      bairro: [null, [Validators.required]],
+      numero: [null],
+      cidade: [null, [Validators.required]],
+      telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
 
-  constructor(public dbService: FirebaseProvider) { }
+    })
+   }
 
-  ngOnInit() {
+  ngOnInit(){
+    
+  }
+
+  cadastraLavacao(){
+    console.log(this.lavacaoForm.value);
   }
 
   save(lavacao){

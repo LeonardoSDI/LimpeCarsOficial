@@ -30,6 +30,7 @@ import { MostrarMapsPageModule } from '../app/mostrar-maps/mostrar-maps.module';
 import { DescricaoLavaPageModule } from '../app/descricao-lava/descricao-lava.module'; 
 import { CadastroLavacaoPageModule } from '../app/cadastro-lavacao/cadastro-lavacao.module';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/dat
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     FirebaseProvider,

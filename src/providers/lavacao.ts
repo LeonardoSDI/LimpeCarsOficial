@@ -6,6 +6,11 @@ export class LavacaoProvider{
     constructor() {}
 
     getMissedLavacao() {
+        var rn = require('random-number');
+        var iden = rn.generator({ min: 1, max: 300, integer:true})
+        iden();
+        console.log('GERAR ID RANDOM: '+iden())
+        
         return[
             {id: 1, name: 'Lavação do Pedrinho',
             geo: {lat: -26.467815, lng: -49.113292}, type: 'Lavagem Ecológica',

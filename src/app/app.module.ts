@@ -32,6 +32,7 @@ import { CadastroLavacaoPageModule } from '../app/cadastro-lavacao/cadastro-lava
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SolicitarLavaPageModule } from './solicitar-lava/solicitar-lava.module';
+import { ControleMapasPageModule } from './controle-mapas/controle-mapas.module';
 
 
 
@@ -44,6 +45,7 @@ import { SolicitarLavaPageModule } from './solicitar-lava/solicitar-lava.module'
     MostrarMapsPageModule,
     DescricaoLavaPageModule,
     CadastroLavacaoPageModule,
+    ControleMapasPageModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,

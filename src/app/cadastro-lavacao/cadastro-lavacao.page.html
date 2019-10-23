@@ -23,27 +23,29 @@
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">CEP</ion-label>
-            <ion-input type="number" [(ngModel)]="lavacao.cep" clearInput class="black" formControlName="cep"></ion-input>
+            <ion-input type="number" [(ngModel)]="lavacao.endereco.cep" clearInput class="black" formControlName="cep"></ion-input>
         </ion-item>
+        
+        <button class="button" (click)="buscarEndereco()">Buscar endereco</button>
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">Rua</ion-label>
-            <ion-input type="text" [(ngModel)]="lavacao.rua" clearInput class="black" formControlName="rua"></ion-input>
+            <ion-input type="text" [(ngModel)]="lavacao.endereco.rua" clearInput class="black" formControlName="rua"></ion-input>
         </ion-item>
 
         <ion-item class="bg-transparent no-padding">
                 <ion-label stacked class="black" position="floating">Bairro</ion-label>
-                <ion-input type="text" [(ngModel)]="lavacao.bairro" clearInput class="black" formControlName="bairro"></ion-input>
+                <ion-input type="text" [(ngModel)]="lavacao.endereco.bairro" clearInput class="black" formControlName="bairro"></ion-input>
             </ion-item>
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">Número</ion-label>
-            <ion-input type="number" [(ngModel)]="lavacao.numero" clearInput class="black" formControlName="numero"></ion-input>
+            <ion-input type="number" [(ngModel)]="lavacao.endereco.numero" clearInput class="black" formControlName="numero"></ion-input>
         </ion-item>
 
         <ion-item class="bg-transparent no-padding">
                 <ion-label stacked class="black" position="floating">Cidade</ion-label>
-                <ion-input type="text" [(ngModel)]="lavacao.cidade" clearInput class="black" formControlName="cidade"></ion-input>
+                <ion-input type="text" [(ngModel)]="lavacao.endereco.cidade" clearInput class="black" formControlName="cidade"></ion-input>
             </ion-item>
 
         <ion-item class="bg-transparent no-padding">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseProvider } from '../../providers/firebase';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { ControleMapasPage } from '../controle-mapas/controle-mapas.page';
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-cadastro-lavacao',
@@ -10,14 +12,22 @@ import { NavController } from '@ionic/angular';
 })
 export class CadastroLavacaoPage implements OnInit {
 
+  controleMapas = new ControleMapasPage();
+  
   lavacao = {
     'empresa': '',
     'cnpj': '',
-    'cep': '',
-    'rua': '',
-    'bairro': '',
-    'numero': '',
-    'cidade': '',
+    'endereco':{
+      'cep': '',
+      'rua': '',
+      'bairro': '',
+      'numero': '',
+      'cidade': '',
+      'coordenadas':{
+        'latitude':"",
+        'longitude':""
+      }
+    },
     'telefone': ''
 
   };
@@ -34,11 +44,35 @@ export class CadastroLavacaoPage implements OnInit {
       cidade: [null, [Validators.required]],
       telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
 
-    })
+    });
+
+    this.controleMapas = new ControleMapasPage();
+
    }
 
   ngOnInit(){
     
+  }
+
+  buscarEndereco(){
+    let endereco = this.lavacao.endereco.cep;
+    console.log('-'+endereco);
+
+    var p1 = new Promise(
+      (resolve, reject) => {
+        this.controleMapas.buscarLatLongEndereco(endereco);
+        window.setTimeout(
+          () => {
+            console.log(this.controleMapas.localizacaoEndereco)
+            let dadosEndereco = this.controleMapas.dadosEndereco.formatted_address.split(',');
+
+            this.lavacao.endereco.rua = dadosEndereco[0]
+            this.lavacao.endereco.bairro = dadosEndereco[1];
+            this.lavacao.endereco.cidade = dadosEndereco[3];
+
+            console.log(this.lavacao.endereco)
+          }, 1000);
+      });
   }
 
   cadastraLavacao(){

@@ -18,25 +18,20 @@
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">CNPJ</ion-label>
-            <ion-input type="number" [(ngModel)]="lavacao.cnpj" clearInput class="black" formControlName="cnpj"></ion-input>
+            <ion-input type="tel" [(ngModel)]="lavacao.cnpj" clearInput class="black" formControlName="cnpj"></ion-input>
         </ion-item>
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">CEP</ion-label>
-            <ion-input type="number" [(ngModel)]="lavacao.endereco.cep" clearInput class="black" formControlName="cep"></ion-input>
+            <ion-input type="tel" [(ngModel)]="lavacao.endereco.cep" clearInput class="black" formControlName="cep"></ion-input>
         </ion-item>
         
         <button class="button" (click)="buscarEndereco()">Buscar endereco</button>
 
         <ion-item class="bg-transparent no-padding">
-            <ion-label stacked class="black" position="floating">Rua</ion-label>
+            <ion-label stacked class="black" position="floating">Rua / Bairro</ion-label>
             <ion-input type="text" [(ngModel)]="lavacao.endereco.rua" clearInput class="black" formControlName="rua"></ion-input>
         </ion-item>
-
-        <ion-item class="bg-transparent no-padding">
-                <ion-label stacked class="black" position="floating">Bairro</ion-label>
-                <ion-input type="text" [(ngModel)]="lavacao.endereco.bairro" clearInput class="black" formControlName="bairro"></ion-input>
-            </ion-item>
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">Número</ion-label>
@@ -46,7 +41,12 @@
         <ion-item class="bg-transparent no-padding">
                 <ion-label stacked class="black" position="floating">Cidade</ion-label>
                 <ion-input type="text" [(ngModel)]="lavacao.endereco.cidade" clearInput class="black" formControlName="cidade"></ion-input>
-            </ion-item>
+        </ion-item>
+
+        <ion-item class="bg-transparent no-padding">
+            <ion-label stacked class="black" position="floating">País</ion-label>
+            <ion-input type="text" [(ngModel)]="lavacao.endereco.pais" clearInput class="black" formControlName="pais"></ion-input>
+        </ion-item>
 
         <ion-item class="bg-transparent no-padding">
             <ion-label stacked class="black" position="floating">Telefone</ion-label>

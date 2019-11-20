@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -64,7 +66,9 @@ import { ControleMapasPageModule } from './controle-mapas/controle-mapas.module'
     StatusBar,
     SplashScreen,
     Geolocation,
+    HTTP,
     LavacaoProvider,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

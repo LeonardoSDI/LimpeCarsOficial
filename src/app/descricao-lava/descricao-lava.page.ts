@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, forwardRef } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { LavacaoProvider } from 'src/providers/lavacao';
 import { Router } from '@angular/router';
@@ -24,11 +24,11 @@ export class DescricaoLavaPage implements OnInit {
   }
 
   goBack1(){
-    this.navCtrl.navigateRoot("/mostrar-maps");
+    this.router.navigate(['/mostrar-maps']);
   }
 
   solicitarLavacao(){
-    this.navCtrl.navigateRoot("/solicitar-lava");
+    this.router.navigate(['/solicitar-lava']);
   }
 
 }

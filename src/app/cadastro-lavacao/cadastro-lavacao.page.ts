@@ -15,17 +15,18 @@ export class CadastroLavacaoPage implements OnInit {
   controleMapas = new ControleMapasPage();
   
   lavacao = {
+    'id': '',
     'empresa': '',
     'cnpj': '',
     'endereco':{
       'cep': '',
       'rua': '',
-      'bairro': '',
       'numero': '',
       'cidade': '',
+      'pais':'',
       'coordenadas':{
-        'latitude':"",
-        'longitude':""
+        'latitude':'',
+        'longitude':'',
       }
     },
     'telefone': ''
@@ -39,9 +40,9 @@ export class CadastroLavacaoPage implements OnInit {
       cnpj: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
       cep: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       rua: [null, [Validators.required]],
-      bairro: [null, [Validators.required]],
       numero: [null],
       cidade: [null, [Validators.required]],
+      pais: [null, [Validators.required]],
       telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
 
     });
@@ -67,8 +68,11 @@ export class CadastroLavacaoPage implements OnInit {
             let dadosEndereco = this.controleMapas.dadosEndereco.formatted_address.split(',');
 
             this.lavacao.endereco.rua = dadosEndereco[0]
-            this.lavacao.endereco.bairro = dadosEndereco[1];
-            this.lavacao.endereco.cidade = dadosEndereco[3];
+            this.lavacao.endereco.cidade = dadosEndereco[1];
+            this.lavacao.endereco.pais = dadosEndereco[3];
+
+            this.lavacao.endereco.coordenadas.latitude = this.controleMapas.localizacaoEndereco.latitude;
+            this.lavacao.endereco.coordenadas.longitude = this.controleMapas.localizacaoEndereco.longitude;
 
             console.log(this.lavacao.endereco)
           }, 1000);
@@ -76,6 +80,12 @@ export class CadastroLavacaoPage implements OnInit {
   }
 
   cadastraLavacao(){
+    var rn = require('random-number');
+    var iden = rn.generator({ min: 1, max: 300, integer:true})
+    iden();
+    this.lavacao.id = iden();
+    console.log('GERAR ID RANDOM: '+this.lavacao.id)
+
     console.log(this.lavacaoForm.value);
   }
 

@@ -1,18 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit  } from '@angular/core';
+import { CadastroLavacaoPage } from 'src/app/cadastro-lavacao/cadastro-lavacao.page';
+import { HTTP } from '@ionic-native/http/ngx';
+import { MostrarMapsPageModule } from '../app/mostrar-maps/mostrar-maps.module';
+import { MostrarMapsPage } from 'src/app/mostrar-maps/mostrar-maps.page';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
-export class LavacaoProvider{
+export class LavacaoProvider implements OnInit{
 
-    constructor() {}
+    lavacaoDb;
+
+    constructor(public http: HTTP) {}
 
     getMissedLavacao() {
-        var rn = require('random-number');
+        /*var rn = require('random-number');
         var iden = rn.generator({ min: 1, max: 300, integer:true})
         iden();
-        console.log('GERAR ID RANDOM: '+iden())
+        console.log('GERAR ID RANDOM: '+iden())*/
         
         return[
-            {id: 1, name: 'Lavação do Pedrinho',
+            {id: 1, name:'Lavação do Pedrinho',
             geo: {lat: -26.467815, lng: -49.113292}, type: 'Lavagem Ecológica',
             photo: './assets/imgs/lavacao1.png',
             attendance: '08:00 - 17:00', description: 'Lavação especializada em lavagem ecológica. Solicite uma lavagem!', 
@@ -34,5 +41,9 @@ export class LavacaoProvider{
 
     getMissedLavacaoId(id){
         return this.getMissedLavacao().filter(lavacao => lavacao.id == id)[0];
+    }
+
+
+    ngOnInit(){
     }
 }

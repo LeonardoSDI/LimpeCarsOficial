@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController, NavParams } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import {
   GoogleMaps,
@@ -17,6 +17,7 @@ import {
 } from '@ionic-native/google-maps';
 import { LavacaoProvider } from 'src/providers/lavacao';
 import { DescricaoLavaPage } from '../descricao-lava/descricao-lava.page';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-mostrar-maps',
@@ -94,29 +95,13 @@ export class MostrarMapsPage implements OnInit {
         let profileModal = await this.modalCtrl.create({component: DescricaoLavaPage, componentProps: {id: marker.get('id')}});
         await profileModal.present();
       });
-  
-      /*let marker: Marker = this.map.addMarkerSync({
-        title: 'Ionic',
-        icon: 'red',
-        animation: 'DROP',
-        position: {
-          lat: resp.coords.latitude,
-          lng: resp.coords.longitude
-        }
-      });
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        alert('clicked');
-      });*/
 
     }).catch((error) => {
       console.log('Error ao pegar localidade', JSON.stringify(error));
       alert('Erro ao capturar a sua posição. Por favor, verifique as permissões!');
     })
-    
-    
   }
   
-
   private fillMissedPointsLavacao(){
     this.lavacaoProvider.getMissedLavacao().forEach(lavacao => {
       let point = {
@@ -137,6 +122,10 @@ export class MostrarMapsPage implements OnInit {
 
       this.points.push(point);
     })
+  }
+
+  goBack(){
+    this.navCtrl.navigateRoot('/list-lavacao');
   }
 
 }

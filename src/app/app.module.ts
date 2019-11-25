@@ -33,8 +33,9 @@ import { DescricaoLavaPageModule } from '../app/descricao-lava/descricao-lava.mo
 import { CadastroLavacaoPageModule } from '../app/cadastro-lavacao/cadastro-lavacao.module';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SolicitarLavaPageModule } from './solicitar-lava/solicitar-lava.module';
+import { SolicitarLavaPageModule } from '../app/solicitar-lava/solicitar-lava.module';
 import { ControleMapasPageModule } from './controle-mapas/controle-mapas.module';
+import { ListLavacaoPageModule} from '../app/list-lavacao/list-lavacao.module';
 
 
 
@@ -58,7 +59,8 @@ import { ControleMapasPageModule } from './controle-mapas/controle-mapas.module'
     IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    SolicitarLavaPageModule
+    SolicitarLavaPageModule,
+    ListLavacaoPageModule
   ],
   providers: [
     FirebaseProvider,

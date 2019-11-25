@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'cadastro-lavacao', loadChildren: './cadastro-lavacao/cadastro-lavacao.module#CadastroLavacaoPageModule' },
   { path: 'solicitar-lava', loadChildren: './solicitar-lava/solicitar-lava.module#SolicitarLavaPageModule' },
   { path: 'controle-mapas', loadChildren: './controle-mapas/controle-mapas.module#ControleMapasPageModule' },
+  { path: 'list-lavacao', loadChildren: './list-lavacao/list-lavacao.module#ListLavacaoPageModule' },
+  { path: 'list-lavacao/:id', loadChildren: './list-lavacao/list-lavacao.module#ListLavacaoPageModule' },
 ];
 
 @NgModule({

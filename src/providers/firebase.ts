@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class FirebaseProvider{
+    lavacoesDb;
     constructor(private afs: AngularFirestore, private db: AngularFireDatabase) {}
 
     //Criar usuario no firestore
@@ -19,6 +20,11 @@ export class FirebaseProvider{
     getUser(uid){
       return this.afs.firestore.collection('users').doc(uid)
       .get();
+    }
+
+    getAll(){
+      this.lavacoesDb =  this.db.list('lavacoes').valueChanges();
+      console.log(this.lavacoesDb);
     }
 
     save(lavacao: any){

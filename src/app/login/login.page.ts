@@ -6,7 +6,6 @@ import { LoadingController} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { database } from 'firebase';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +50,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 })
 export class LoginPage implements OnInit {
 
+  private url
+
   login = true;
   register = false;
   loginForm = {
@@ -69,12 +70,8 @@ export class LoginPage implements OnInit {
     private firebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
     private storages: Storage,
-    private router: Router,
-    private keyboard: Keyboard
-  ) {
-    this.keyboard.onKeyboardWillShow().subscribe(() => {
-      
-    })
+    private router: Router
+  ){
   }
 
   // Exibir o formulário de registro

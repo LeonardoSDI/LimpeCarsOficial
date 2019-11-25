@@ -1,24 +1,22 @@
 <ion-header>
   <ion-toolbar>
-      <button ion-button clear large (click)="goBack1()">
-          <ion-icon name="arrow-dropleft"></ion-icon>
-      </button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/mostrar-maps"></ion-back-button>
+    </ion-buttons>
 
     <ion-title>descricao-lava</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img [src]="lavacao.photo"/>
-  <p class="ion-text-center">{{lavacao.description}}</p>
-  <h2 class="ion-text-center">Empresa: <strong>{{lavacao.name}}</strong></h2>
-  <h2 class="ion-text-center">Especialidade: <strong>{{lavacao.type}}</strong></h2>
-  <h2 class="ion-text-center">Atendimento: <strong>{{lavacao.attendance}}</strong></h2>
-  <h2 class="ion-text-center">Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
+<ion-content >
+    <img [src]="lavacao.photo"/>
+    <p class="ion-text-center">{{lavacao.description}}</p>
+    <h2 class="ion-text-center">Empresa: <strong>{{lavacao.name}}</strong></h2>
+    <h2 class="ion-text-center">Especialidade: <strong>{{lavacao.type}}</strong></h2>
+    <h2 class="ion-text-center">Atendimento: <strong>{{lavacao.attendance}}</strong></h2>
+    <h2 class="ion-text-center">Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
 
-  <div class="padding-40">
-      <div class="bg-lavacao center bold2 mg-top--15" (click)="solicitarLavacao()">
-        Solicitar lavacao
-      </div>
-  </div>
+    <ion-button routerLink="/solicitar-lava" routerDirection="root" class="bg-lavacao center bold2 mg-top--15">
+      Solicitar lavacao
+    </ion-button>
 </ion-content>

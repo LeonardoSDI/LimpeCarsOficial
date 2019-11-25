@@ -4,13 +4,12 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { MostrarMapsPageModule } from '../app/mostrar-maps/mostrar-maps.module';
 import { MostrarMapsPage } from 'src/app/mostrar-maps/mostrar-maps.page';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseProvider } from 'src/providers/firebase';
 
 @Injectable()
 export class LavacaoProvider implements OnInit{
 
-    lavacaoDb;
-
-    constructor(public http: HTTP) {}
+    constructor(public http: HTTP, public dbService: FirebaseProvider) {}
 
     getMissedLavacao() {
         /*var rn = require('random-number');
@@ -18,7 +17,7 @@ export class LavacaoProvider implements OnInit{
         iden();
         console.log('GERAR ID RANDOM: '+iden())*/
         
-        return[
+        return[ 
             {id: 1, name:'Lavação do Pedrinho',
             geo: {lat: -26.467815, lng: -49.113292}, type: 'Lavagem Ecológica',
             photo: './assets/imgs/lavacao1.png',

@@ -9,7 +9,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 export class SolicitarLavaPage implements OnInit {
   assunto='';
   corpo='';
-  destinatario='';
+  para='';
 
   constructor(public emailComposer: EmailComposer) { }
 
@@ -18,12 +18,12 @@ export class SolicitarLavaPage implements OnInit {
 
   enviar(){
     let email = {
-      destinatario: this.destinatario,
+      to: this.para,
       cc: [],
       ccc: [],
-      anexo: [],
-      assunto: this.assunto,
-      corpo: this.corpo,
+      attachment: [],
+      subject: this.assunto,
+      body: this.corpo,
       isHtml: false,
       app: "Gmail"
     }

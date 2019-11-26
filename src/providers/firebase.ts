@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
-import { Injectable } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { getDefaultService } from 'selenium-webdriver/opera';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -8,6 +8,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class FirebaseProvider{
     lavacoesDb;
+    private PATH = 'lavacoes/';
     constructor(private afs: AngularFirestore, private db: AngularFireDatabase) {}
 
     //Criar usuario no firestore
@@ -23,12 +24,21 @@ export class FirebaseProvider{
     }
 
     getAll(){
-      this.lavacoesDb =  this.db.list('lavacoes').valueChanges();
-      console.log(this.lavacoesDb);
+      return this.db.list('lavacoes').snapshotChanges().map(data => {
+        return data.map(d => ({key: d.key, ...d.payload.val()}));
+      })
+    }
+
+    get(key: string){
+        return this.db.object(this.PATH + key)
+              .snapshotChanges()
+              .map(l => {
+                  return {key: l.key, data: l.payload.val()};
+              })
     }
 
     save(lavacao: any){
-      this.db.list('lavacoes').push(lavacao).then(res => console.log(res));
+      this.db.list('lavacoes').push(lavacao).then(r => console.log(r));
     }
     
 }

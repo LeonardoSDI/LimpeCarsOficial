@@ -9,7 +9,7 @@ import { FirebaseProvider } from 'src/providers/firebase';
 @Injectable()
 export class LavacaoProvider implements OnInit{
 
-    constructor(public http: HTTP, public dbService: FirebaseProvider) {}
+    constructor(public http: HTTP, public dbService: AngularFireDatabase) {}
 
     getMissedLavacao() {
         /*var rn = require('random-number');
@@ -45,4 +45,6 @@ export class LavacaoProvider implements OnInit{
 
     ngOnInit(){
     }
+
+    
 }

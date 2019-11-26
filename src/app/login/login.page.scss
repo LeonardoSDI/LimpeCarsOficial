@@ -32,6 +32,9 @@
     padding: 15px;
     background-color: blue;
     border-radius: 100px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80%;
     color: white;
 }
 
@@ -43,6 +46,7 @@
     padding: 15px;
     background-color: blue;
     border-radius: 100px;
+    width: 80%;
     color: white;
 }
 
@@ -57,11 +61,19 @@
 
 //Margens
 .mg-top--15{
-    margin-top: -15px;
+    margin-top: 50px;
+}
+
+.mg-top--16{
+    margin-top: 30px;
 }
 
 .mg-top-15{
     margin-top: 15px;
+}
+
+.mg-top-15{
+    margin-top: 10px;
 }
 
 .mg-top-25{

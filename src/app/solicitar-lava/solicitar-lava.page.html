@@ -7,16 +7,17 @@
 <ion-content>
   <div class="padding-40">
     <ion-item>
-      <ion-label color="primary" position="floating">Assunto</ion-label>
-      <ion-input [(ngModel)]="assunto" type="text" placeholder="Informe o seu e-mail"></ion-input>
+        <ion-label color="primary" position="floating">Para</ion-label>
+        <ion-input [(ngModel)]="para" type="text" clearInput placeholder="Informe o destinatário"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label color="primary" position="floating">Texto</ion-label>
-        <ion-input [(ngModel)]="corpo" type="text" placeholder="Informe o assunto"></ion-input>
+      <ion-label color="primary" position="floating">Subject</ion-label>
+      <ion-input [(ngModel)]="assunto" type="text" clearInput placeholder="Informe o assunto"></ion-input>
     </ion-item>
+
     <ion-item>
-        <ion-label color="primary" position="floating">Destinatário</ion-label>
-        <ion-input [(ngModel)]="destinatario" type="text" placeholder="Destinatário"></ion-input>
+        <ion-label color="primary" position="floating">Body</ion-label>
+        <ion-textarea [(ngModel)]="corpo" clearInput placeholder="Informe o que deseja enviar"></ion-textarea>
     </ion-item>
 
     <button ion-button block (click)="enviar()">Enviar e-mail</button>

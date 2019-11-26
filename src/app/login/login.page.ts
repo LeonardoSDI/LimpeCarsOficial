@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AuthProvider } from '../../providers/auth';
 import { FirebaseProvider } from '../../providers/firebase';
-import { LoadingController} from '@ionic/angular';
+import { LoadingController, IonInput} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { database } from 'firebase';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +52,7 @@ import { database } from 'firebase';
 export class LoginPage implements OnInit {
 
   private url
+  @ViewChild('myInput', {static: false}) myInput: IonInput;
 
   login = true;
   register = false;
@@ -70,8 +72,14 @@ export class LoginPage implements OnInit {
     private firebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
     private storages: Storage,
-    private router: Router
+    private router: Router,
+    private keyboard: Keyboard
   ){
+    this.keyboard.hideFormAccessoryBar(false);
+  }
+
+  show(){
+    this.myInput.setFocus();
   }
 
   // Exibir o formulário de registro

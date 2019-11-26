@@ -1,8 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="primary">
+          <ion-button (click)="goBack()">
+              <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">Lista de Lavações</ion-title>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content padding>
-  <ul>
-    <li *ngFor="let l of lavacoesDb">
-        {{l|json}}
-    </li>
-  </ul>
-  
+  <ion-searchbar (ionInput)="getLavacoes($event)"></ion-searchbar>
+
+  <ion-list inset>
+    <ion-item *ngFor="let l of lavacoes|async" (click)="solicitarLava()">
+        {{l.empresa}} - {{l.endereco.rua}}
+    </ion-item>
+  </ion-list>
 </ion-content>

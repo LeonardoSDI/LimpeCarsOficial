@@ -13,6 +13,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./list-lavacao.page.scss'],
 })
 export class ListLavacaoPage implements OnInit {
+  @ViewChild('myNav', {static:false}) nav: NavController
   lavacoesDb;
   lavacoes;
   public carregaLista: any;
@@ -27,10 +28,6 @@ export class ListLavacaoPage implements OnInit {
 
   goBack(){
     this.navCtrl.navigateRoot("/mostrar-maps");
-  }
-
-  solicitarLava(){
-    
   }
 
 }

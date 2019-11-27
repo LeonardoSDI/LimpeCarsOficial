@@ -25,7 +25,7 @@
 
 .bg-transparent{
     --ion-background-color: transparent;
-    --ion-border-color: white;
+    --ion-border-color: black;
 }
 
 .bg-entrar{
@@ -61,7 +61,7 @@
 
 //Margens
 .mg-top--15{
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .mg-top--16{
@@ -102,6 +102,10 @@
 //Espacamento
 .no-padding{
     padding: 0px;
+}
+
+.padding-10{
+    padding: 10px;
 }
 
 .padding-20{

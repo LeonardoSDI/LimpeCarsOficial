@@ -6,6 +6,7 @@ import { LoadingController, IonInput} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { database } from 'firebase';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
@@ -52,7 +53,6 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 export class LoginPage implements OnInit {
 
   private url
-  @ViewChild('myInput', {static: false}) myInput: IonInput;
 
   login = true;
   register = false;
@@ -66,20 +66,21 @@ export class LoginPage implements OnInit {
     password: ''
   };
   
-
+  lavacaoForm: FormGroup;
   constructor(
     private authProvider: AuthProvider,
     private firebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
     private storages: Storage,
     private router: Router,
-    private keyboard: Keyboard
+    private keyboard: Keyboard,
+    private formBuilder: FormBuilder
   ){
-    this.keyboard.hideFormAccessoryBar(false);
-  }
+    this.lavacaoForm = this.formBuilder.group({
+      email: [null, [Validators.required]],
+      senha: [null, [Validators.required]]
 
-  show(){
-    this.myInput.setFocus();
+    });
   }
 
   // Exibir o formulário de registro

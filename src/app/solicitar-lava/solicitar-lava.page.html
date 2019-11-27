@@ -1,26 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>solicitar-lava</ion-title>
+  <ion-toolbar color="primary">
+      <ion-title class="center">Solicitar Lavação</ion-title>
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
-</ion-header>
 
 <ion-content>
   <div class="padding-40">
+    <div class="center padding-top-30">
+        <img src="./assets/imgs/teste.png" class="logo-lava">
+    </div>
+
+    <div class="mg-top-20">
+        <p class="center bold2" color="black">
+          E-mail para solicitar lavação
+        </p>
+      </div>
+
     <ion-item>
-        <ion-label color="primary" position="floating">Para</ion-label>
+        <ion-label color="black" position="floating">Para</ion-label>
         <ion-input [(ngModel)]="para" type="text" clearInput placeholder="Informe o destinatário"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" position="floating">Subject</ion-label>
+      <ion-label color="black" position="floating">Assunto</ion-label>
       <ion-input [(ngModel)]="assunto" type="text" clearInput placeholder="Informe o assunto"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label color="primary" position="floating">Body</ion-label>
+        <ion-label color="black" position="floating">Informações</ion-label>
         <ion-textarea [(ngModel)]="corpo" clearInput placeholder="Informe o que deseja enviar"></ion-textarea>
     </ion-item>
 
-    <button ion-button block (click)="enviar()">Enviar e-mail</button>
+    <ion-button expand="full" (click)="enviar()">
+      Enviar e-mail
+    </ion-button>
   </div>
 
 </ion-content>

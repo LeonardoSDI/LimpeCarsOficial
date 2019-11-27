@@ -22,24 +22,27 @@
          </div>
 
          <!--INPUTS-->
-            <ion-item class="bg-transparent no-padding col">
-              <ion-label stacked class="white" position="floating">E-mail</ion-label>
-              <ion-input type="email" clearInput class="white" #myInput [(ngModel)]="loginForm.email"></ion-input>
+         <form novalidate [formGroup]="lavacaoForm">
+
+            <ion-item class="bg-transparent no-padding">
+                <ion-label stacked class="white" position="floating">E-mail</ion-label>
+                <ion-input type="email" [(ngModel)]="loginForm.email" clearInput class="white" formControlName="email"></ion-input>
             </ion-item>
 
-            <ion-item class="bg-transparent mg-top-10 no-padding col">
-              <ion-label stacked class="white" position="floating">Senha</ion-label>
-              <ion-input type="password" clearInput class="white" #myInput [(ngModel)]="loginForm.password"></ion-input>
+            <ion-item class="bg-transparent no-padding">
+                <ion-label stacked class="white" position="floating">Senha</ion-label>
+                <ion-input type="password" [(ngModel)]="loginForm.password" clearInput class="white" formControlName="senha"></ion-input>
             </ion-item>
 
           <ion-row>
             <ion-col widht-50 style="text-align: center">
               <!--BOTAO ENTRAR-->
-                <button ion-button class="bg-entrar center bold2 mg-top--15" (click)="efetuarLogin()">
+                <button ion-button class="bg-entrar center bold2 mg-top--15" (click)="efetuarLogin()" [disabled]="lavacaoForm.invalid">
                     Entrar
                   </button>
             </ion-col>
           </ion-row>
+        </form>
           
 
           <div class="bg-registrar bold2 mg-top-15 center" (click)="exibirRegistrar()">

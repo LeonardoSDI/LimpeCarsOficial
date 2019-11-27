@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { NavController, ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-solicitar-lava',
@@ -11,7 +12,7 @@ export class SolicitarLavaPage implements OnInit {
   corpo='';
   para='';
 
-  constructor(public emailComposer: EmailComposer) { }
+  constructor(public emailComposer: EmailComposer, public navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,10 @@ export class SolicitarLavaPage implements OnInit {
       app: "Gmail"
     }
     this.emailComposer.open(email);
+  }
+
+  goBack(){
+    this.navCtrl.navigateRoot('/mostrar-maps');
   }
 
 }

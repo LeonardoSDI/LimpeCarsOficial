@@ -10,10 +10,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getLavacoes($event)"></ion-searchbar>
-
   <ion-list inset>
-    <ion-item *ngFor="let l of lavacoes|async" (click)="solicitarLava()">
+    <ion-item *ngFor="let l of lavacoes|async">
         {{l.empresa}} - {{l.endereco.rua}}
     </ion-item>
   </ion-list>

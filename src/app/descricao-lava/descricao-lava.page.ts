@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SolicitarLavaPage } from '../solicitar-lava/solicitar-lava.page';
 import { SolicitarLavaPageModule } from '../solicitar-lava/solicitar-lava.module';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-descricao-lava',
@@ -18,7 +19,8 @@ export class DescricaoLavaPage implements OnInit {
   constructor(public navCtrl: NavController,
     public navParams: NavParams, 
     public lavacaoProvider: LavacaoProvider,
-    public router: Router) {
+    public router: Router,
+    public route: ActivatedRoute) {
 
       this.lavacao = lavacaoProvider.getMissedLavacaoId(navParams.get('id'));
     }
@@ -30,7 +32,8 @@ export class DescricaoLavaPage implements OnInit {
     this.router.navigate(['/mostrar-maps']);
   }
 
-  solicitarLavacao(){
+  solicitarLava(){
+    this.router.navigate(['/solicitar-lava']);
   }
 
 }

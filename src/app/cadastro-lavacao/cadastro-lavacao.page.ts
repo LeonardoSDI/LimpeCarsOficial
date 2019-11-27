@@ -29,7 +29,10 @@ export class CadastroLavacaoPage implements OnInit {
         'longitude':'',
       }
     },
-    'telefone': ''
+    'telefone': '',
+    'tipo': '',
+    'atendimento': '',
+    'preco': '',
 
   };
   
@@ -43,7 +46,10 @@ export class CadastroLavacaoPage implements OnInit {
       numero: [null],
       cidade: [null, [Validators.required]],
       pais: [null, [Validators.required]],
-      telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      tipo: [null, [Validators.required]],
+      atendimento: [null, [Validators.required]],
+      preco: [null, [Validators.required]]
 
     });
 
@@ -77,16 +83,6 @@ export class CadastroLavacaoPage implements OnInit {
             console.log(this.lavacao.endereco)
           }, 1000);
       });
-  }
-
-  cadastraLavacao(){
-    var rn = require('random-number');
-    var iden = rn.generator({ min: 1, max: 300, integer:true})
-    iden();
-    this.lavacao.id = iden();
-    console.log('GERAR ID RANDOM: '+this.lavacao.id)
-
-    console.log(this.lavacaoForm.value);
   }
 
   save(lavacao){

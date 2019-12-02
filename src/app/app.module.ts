@@ -18,6 +18,7 @@ import { firebaseConfig } from '../configs/firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 //Plugins
 import { IonicStorageModule } from '@ionic/storage';
@@ -71,6 +72,7 @@ import { ListLavacaoPageModule} from '../app/list-lavacao/list-lavacao.module';
     HTTP,
     LavacaoProvider,
     EmailComposer,
+    Keyboard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

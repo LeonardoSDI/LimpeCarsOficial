@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams, LoadingController, ToastController } from '@ionic/angular';
 import { LavacaoProvider } from 'src/providers/lavacao';
 import { Router } from '@angular/router';
 import { SolicitarLavaPage } from '../solicitar-lava/solicitar-lava.page';
 import { SolicitarLavaPageModule } from '../solicitar-lava/solicitar-lava.module';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { AuthProvider } from 'src/providers/auth';
+import { Lavacao } from '../lavacoes';
+import { Subscription } from 'rxjs';
+import { LavacoesService } from '../services/lavacoes.service';
+import { database } from 'firebase';
 
 @Component({
   selector: 'app-descricao-lava',
@@ -13,27 +18,38 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./descricao-lava.page.scss']
 })
 export class DescricaoLavaPage implements OnInit {
+  private lavacaoId: string = null;
+  public lavacao: Lavacao = {};
+  private loading: any;
+  private lavacaoSubscription: Subscription;
 
-  lavacao;
+  constructor(private lavacaoService: LavacoesService,
+    private activatedRoute: ActivatedRoute,
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController,
+    private authProvider: AuthProvider,
+    private toastCtrl: ToastController) {
+      this.lavacaoId = this.activatedRoute.snapshot.params['id'];
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams, 
-    public lavacaoProvider: LavacaoProvider,
-    public router: Router,
-    public route: ActivatedRoute) {
-
-      this.lavacao = lavacaoProvider.getMissedLavacaoId(navParams.get('id'));
+      if (this.lavacaoId) this.loadProduct();
     }
 
   ngOnInit() {
   }
 
-  goBack1(){
-    this.router.navigate(['/mostrar-maps']);
+  loadProduct() {
+    this.lavacaoSubscription = this.lavacaoService.getProduct(this.lavacaoId).subscribe(data => {
+      this.lavacao = data;
+    });
   }
 
-  solicitarLava(){
-    this.router.navigate(['/solicitar-lava']);
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
   }
 
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
+  }
 }

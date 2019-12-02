@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseProvider } from '../../providers/firebase';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController, LoadingController } from '@ionic/angular';
 import { ControleMapasPage } from '../controle-mapas/controle-mapas.page';
 import { promise } from 'protractor';
+import { Lavacao } from '../lavacoes';
+import { Subscription } from 'rxjs';
+import { AuthProvider } from 'src/providers/auth';
+import { LavacoesService } from '../services/lavacoes.service';
 
 @Component({
   selector: 'app-cadastro-lavacao',
@@ -11,33 +14,17 @@ import { promise } from 'protractor';
   styleUrls: ['./cadastro-lavacao.page.scss'],
 })
 export class CadastroLavacaoPage implements OnInit {
+  private lavacaoId: string = null;
+  public lavacao: Lavacao = {};
+  private loading: any;
+  private lavacaoSubscription: Subscription;
 
   controleMapas = new ControleMapasPage();
-  
-  lavacao = {
-    'id': '',
-    'empresa': '',
-    'cnpj': '',
-    'endereco':{
-      'cep': '',
-      'rua': '',
-      'numero': '',
-      'cidade': '',
-      'pais':'',
-      'coordenadas':{
-        'latitude':'',
-        'longitude':'',
-      }
-    },
-    'telefone': '',
-    'tipo': '',
-    'atendimento': '',
-    'preco': '',
 
-  };
-  
   lavacaoForm: FormGroup;
-  constructor(public dbService: FirebaseProvider, public formbuilder: FormBuilder, public navCtrl: NavController) {
+  constructor(public formbuilder: FormBuilder, public navCtrl: NavController,
+    private loadingCtrl: LoadingController, private toastCtrl: ToastController, private authProvider: AuthProvider,
+    private lavacaoService: LavacoesService) {
     this.lavacaoForm = this.formbuilder.group({
       empresa: [null, [Validators.required, Validators.minLength(4)]],
       cnpj: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
@@ -55,15 +42,15 @@ export class CadastroLavacaoPage implements OnInit {
 
     this.controleMapas = new ControleMapasPage();
 
-   }
-
-  ngOnInit(){
-    
   }
 
-  buscarEndereco(){
-    let endereco = this.lavacao.endereco.cep;
-    console.log('-'+endereco);
+  ngOnInit() {
+
+  }
+
+  buscarEndereco() {
+    let endereco = this.lavacao.cep;
+    console.log('-' + endereco);
 
     var p1 = new Promise(
       (resolve, reject) => {
@@ -73,25 +60,45 @@ export class CadastroLavacaoPage implements OnInit {
             console.log(this.controleMapas.localizacaoEndereco)
             let dadosEndereco = this.controleMapas.dadosEndereco.formatted_address.split(',');
 
-            this.lavacao.endereco.rua = dadosEndereco[0]
-            this.lavacao.endereco.cidade = dadosEndereco[1];
-            this.lavacao.endereco.pais = dadosEndereco[3];
+            this.lavacao.rua = dadosEndereco[0]
+            this.lavacao.cidade = dadosEndereco[1];
+            this.lavacao.pais = dadosEndereco[3];
 
-            this.lavacao.endereco.coordenadas.latitude = this.controleMapas.localizacaoEndereco.latitude;
-            this.lavacao.endereco.coordenadas.longitude = this.controleMapas.localizacaoEndereco.longitude;
+            this.lavacao.latitude = this.controleMapas.localizacaoEndereco.latitude;
+            this.lavacao.longitude = this.controleMapas.localizacaoEndereco.longitude;
 
-            console.log(this.lavacao.endereco)
+            console.log(this.lavacao.latitude, this.lavacao.longitude)
           }, 1000);
       });
   }
 
-  save(lavacao){
-    console.log(lavacao);
-    this.dbService.save(lavacao);
+  async saveLavacao() {
+    await this.presentLoading();
+
+    this.lavacao.userId = this.authProvider.getAuth().currentUser.uid;
+
+
+    this.lavacao.createdAt = new Date().getTime();
+    try {
+      await this.lavacaoService.addLavacao(this.lavacao);
+      await this.loading.dismiss();
+      this.navCtrl.navigateBack('/list-lavacao');
+    } catch (error) {
+      this.presentToast('Erro ao tentar salvar');
+      this.loading.dismiss();
+    }
+
   }
 
-  goBack(){
-    this.navCtrl.navigateRoot("/mostrar-maps");
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
+  }
+
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
   }
 
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/mostrar-maps"></ion-back-button>
+      <ion-back-button defaultHref="/list-lavacao"></ion-back-button>
     </ion-buttons>
 
     <ion-title>descricao-lava</ion-title>
@@ -10,15 +10,17 @@
 
 <ion-content >
     <p class="ion-text-center">{{lavacao.description}}</p>
-    <h2 class="ion-text-center">Empresa: <strong>{{lavacao.name}}</strong></h2>
-    <h2 class="ion-text-center">Especialidade: <strong>{{lavacao.type}}</strong></h2>
+    <h2 class="ion-text-center"><strong>Empresa</strong></h2>
+    <h2 class="ion-text-center">{{lavacao.name}}</h2>
+    <h2 class="ion-text-center"><strong>Tipos de lavação</strong></h2>
+    <h2 class="ion-text-center">{{lavacao.type}}</h2>
     <h2 class="ion-text-center">Atendimento: <strong>{{lavacao.attendance}}</strong></h2>
-    <h2 class="ion-text-center">Contato: <strong>{{lavacao.contact.phone}}</strong></h2>
+    <h2 class="ion-text-center">Contato: <strong>{{lavacao.telefone}}</strong></h2>
 
     <ion-row>
       <ion-col widht-50 style="text-align: center">
           <!--BOTAO ENTRAR-->
-            <button ion-button class="bg-lavacao center bold2 mg-top--15" (click)="solicitarLava()">
+            <button ion-button class="bg-lavacao center bold2 mg-top--15">
                 Solicitar lavação
               </button>
       </ion-col>

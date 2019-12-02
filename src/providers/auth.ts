@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from 'src/app/user';
 
 // Providers que são serviços que podem ser utilizado em determinadas partes do código.
 
 //Autenticacao
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthProvider{
 
     constructor(
@@ -12,9 +15,19 @@ export class AuthProvider{
     ) {
     }
 
-    //Criar usuario
-    register = (data) => this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password);
-
-    //Login
-    login = (data) => this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password);
+    login(user: User) {
+        return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      }
+    
+      register(user: User) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      }
+    
+      logout() {
+        return this.afAuth.auth.signOut();
+      }
+    
+      getAuth() {
+        return this.afAuth.auth;
+      }
 }

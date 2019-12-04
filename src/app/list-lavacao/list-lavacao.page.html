@@ -1,11 +1,6 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Limpe Cars</ion-title>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon slot="start" name="map"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -32,25 +27,14 @@
   <ion-list>
     <ion-item-sliding *ngFor="let lavacao of lavacoes">
       <ion-item button [routerLink]="['/descricao-lava', lavacao.id]">
-        <ion-avatar slot="start">
-          <img [src]="lavacao.picture">
-        </ion-avatar>
-
         <ion-label>
           {{ lavacao.name }}
           <p>{{ lavacao.description }}</p>
-          <p>{{ lavacao.createdAt | date: 'short' }}</p>
+          <p>{{ lavacao.rua}}</p>
         </ion-label>
 
         <ion-note color="primary" slot="end" *ngIf="lavacao.price">{{ lavacao.price | currency: 'BRL' }}</ion-note>
       </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="deleteLavacao(lavacao.id)">
-          <ion-icon slot="top" name="trash"></ion-icon>
-          Excluir
-        </ion-item-option>
-      </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>
@@ -62,6 +46,12 @@
         <ion-col size="6">
           <ion-button (click)="logout()" color="danger" expand="block">
             Sair
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button (click)="cadastrar()" expand="block">
+            Cadastro Lavação
           </ion-button>
         </ion-col>
       </ion-row>

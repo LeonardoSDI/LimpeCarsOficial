@@ -32,7 +32,7 @@ export class SolicitarLavaPage implements OnInit {
   }
 
   goBack(){
-    this.navCtrl.navigateRoot('/mostrar-maps');
+    this.navCtrl.navigateRoot('/list-lavacao');
   }
 
 }

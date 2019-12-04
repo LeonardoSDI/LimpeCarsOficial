@@ -35,6 +35,7 @@ export class CadastroLavacaoPage implements OnInit {
       pais: [null, [Validators.required]],
       telefone: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       tipo: [null, [Validators.required]],
+      descricao: [null, [Validators.required]],
       atendimento: [null, [Validators.required]],
       preco: [null, [Validators.required]]
 

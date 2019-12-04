@@ -73,4 +73,8 @@ export class ListLavacaoPage implements OnInit {
   goBack(){
     this.navCtrl.navigateRoot('/mostrar-maps');
   }
+
+  cadastrar(){
+    this.navCtrl.navigateRoot('/cadastro-lavacao');
+  }
 }

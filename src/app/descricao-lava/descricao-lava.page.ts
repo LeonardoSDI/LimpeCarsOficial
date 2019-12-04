@@ -52,4 +52,12 @@ export class DescricaoLavaPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
+
+  solicitaLavacao(){
+    this.navCtrl.navigateRoot('/solicitar-lava');
+  }
+
+  goBack(){
+    this.navCtrl.navigateRoot('/mostrar-maps');
+  }
 }

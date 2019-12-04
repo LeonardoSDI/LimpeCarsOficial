@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoggedGuard] },
   { path: 'mostrar-maps', loadChildren: './mostrar-maps/mostrar-maps.module#MostrarMapsPageModule',  canActivate: [AuthGuard]},
+  { path: 'mostrar-maps/:id', loadChildren: './mostrar-maps/mostrar-maps.module#MostrarMapsPageModule',  canActivate: [AuthGuard]},
   { path: 'descricao-lava', loadChildren: './descricao-lava/descricao-lava.module#DescricaoLavaPageModule', canActivate: [AuthGuard] },
   { path: 'descricao-lava/:id', loadChildren: './descricao-lava/descricao-lava.module#DescricaoLavaPageModule', canActivate: [AuthGuard] },
   { path: 'cadastro-lavacao', loadChildren: './cadastro-lavacao/cadastro-lavacao.module#CadastroLavacaoPageModule', canActivate: [AuthGuard] },

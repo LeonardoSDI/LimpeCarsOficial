@@ -55,6 +55,11 @@
             </ion-item>
 
             <ion-item class="bg-transparent no-padding">
+                <ion-label stacked class="black" position="floating">Descrição</ion-label>
+                <ion-input type="text" [(ngModel)]="lavacao.description" clearInput class="black" formControlName="descricao"></ion-input>
+            </ion-item>
+
+            <ion-item class="bg-transparent no-padding">
                 <ion-label stacked class="black" position="floating">Horário atendimento</ion-label>
                 <ion-input type="text" [(ngModel)]="lavacao.attendance" clearInput class="black" formControlName="atendimento"></ion-input>
             </ion-item>
